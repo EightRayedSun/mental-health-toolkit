@@ -5,6 +5,11 @@
       <icon-button icon="fas fa-file-alt" @click="add" iconColor="#0066FF" />
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <p>{{today}}</p>
+    </div>
+  </div>
   <div class="row" v-if="negativeThoughts.length === 0">
     <div class="col-12">
       <p>{{$t('copy.initialMessage')}}</p>
@@ -32,9 +37,15 @@
 import NegativeThought from '@/components/NegativeThought';
 import uuidv4 from 'uuid/v4';
 import IconButton from '@/components/IconButton';
-import { sync } from 'vuex-pathify'
+import { sync } from 'vuex-pathify';
+import moment from 'moment';
 export default {
   name: 'TripleColumn',
+  data() {
+    return {
+      today : moment().format('dddd MMM D YYYY')
+    }
+  },
   components: {
     NegativeThought,
     IconButton
